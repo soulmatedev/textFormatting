@@ -1,0 +1,101 @@
+﻿<Window x:Class="formatingtext.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:formatingtext"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="643" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                
+                <StackPanel Margin="30 30 30 10">
+                    <TextBlock FontStyle="Italic" Opacity="0.7">Размер Шрифта</TextBlock>
+                    <Slider Name="sliderFontSize" Maximum="32" Minimum="10" Value="14" TickFrequency="1" IsSnapToTickEnabled="True" />
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8" Opacity="0.7">
+                    <TextBlock FontStyle="Italic">Начертание</TextBlock>
+                    <RadioButton Name="NormalTypeface" Checked="Typeface_Checked">Нормальный</RadioButton>
+                    <RadioButton Name="ItalicTypeface" Checked="Typeface_Checked">Наклонный</RadioButton>
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8" Opacity="0.7">
+                    <TextBlock FontStyle="Italic">Вес</TextBlock>
+                    <RadioButton Name="ThinWeight" Checked="Weight_Checked">Тонкий</RadioButton>
+                    <RadioButton Name="NormalWeight" Checked="Weight_Checked">Нормальный</RadioButton>
+                    <RadioButton Name="BoldWeight" Checked="Weight_Checked">Жирный</RadioButton>
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8" Opacity="0.7">
+                    <TextBlock FontStyle="Italic">Шрифт</TextBlock>
+                    <ComboBox Name="cbFontFamilies"></ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8" Opacity="0.7">
+                    <TextBlock FontStyle="Italic">Цвет текста</TextBlock>
+                    <ComboBox Name="cbFontColor" SelectedValue="Black"></ComboBox>
+                </StackPanel>
+                
+                <StackPanel Margin="30 0 30 8" Opacity="0.7">
+                    <TextBlock FontStyle="Italic">Цвет заливки</TextBlock>
+                    <ComboBox Name="cbFillColor" SelectedValue="#faca39"></ComboBox>
+                </StackPanel>
+                
+                <StackPanel Margin="30 0 30 8" Opacity="0.7">
+                    <TextBlock FontStyle="Italic">Выравнивание</TextBlock>
+                    <ComboBox Name="cbAligment"></ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8" Opacity="0.7">
+                    <TextBlock FontStyle="Italic">Цвет рамки</TextBlock>
+                    <ComboBox Name="cbBorderColor" SelectedValue="#fc3e28"></ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8">
+                    <TextBlock FontStyle="Italic" Opacity="0.7">Толщина</TextBlock>
+                    <Slider Name="sliderBorderThickness" Maximum="32" Minimum="0" Value="14"></Slider>
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8">
+                    <TextBlock FontStyle="Italic" Opacity="0.7">Скругление углов</TextBlock>
+                    <Slider Name="sliderCornerRadius" Maximum="40" Minimum="0" Value="30"></Slider>
+                </StackPanel>
+
+                <StackPanel Margin="30 0 30 8">
+                    <TextBlock FontStyle="Italic" Opacity="0.7">Отступ</TextBlock>
+                    <Slider Name="sliderIndentation" Maximum="40" Minimum="0" Value="18"></Slider>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Vertical">
+                <Border BorderThickness="{Binding ElementName=sliderBorderThickness, Path=Value}" BorderBrush="{Binding ElementName=cbBorderColor, Path=SelectedValue}" Height="550" Margin="30" 
+                        Padding="{Binding ElementName=sliderIndentation, Path=Value}"  
+                        CornerRadius="{Binding ElementName=sliderCornerRadius, Path=Value}" Background="{Binding ElementName=cbFillColor, Path=SelectedValue}">
+                    <TextBlock Name="tbText" 
+                               FontSize="{Binding ElementName =sliderFontSize, Path=Value}"
+                               FontFamily="{Binding ElementName=cbFontFamilies, Path=SelectedItem}"
+                               Foreground="{Binding ElementName=cbFontColor, Path=SelectedValue}" 
+                               TextAlignment="{Binding ElementName=cbAligment, Path=SelectedValue}"
+                               TextWrapping="Wrap" Margin="0 0 0 24">
+                            Binding - это является мощным инструментом программирования, 
+                            без которого не обходится ни одно серьезное приложение. 
+                            Привязка подразумевает взаимодействие двух объектов: источника и приемника. 
+                            Объект-приемник создает привязку к определенному свойству объекта-источника.
+                    </TextBlock>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
